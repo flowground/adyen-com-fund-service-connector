@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "destinationAccountCode": {
+                    "description": "The destination account code.",
+                    "type": "string"
+                },
+                "merchantReference": {
+                    "description": "A value that can be supplied at the discretion of the executing user.",
+                    "type": "string"
+                },
+                "sourceAccountCode": {
+                    "description": "The benefactor account.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sourceAccountCode",
+                "destinationAccountCode",
+                "merchantReference"
+            ],
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "accountHolderCode": {
+                    "description": "The code of the Account Holder that owns the account(s) of which retrieve the transaction list.",
+                    "type": "string"
+                },
+                "transactionListsPerAccount": {
+                    "description": "A list of accounts to include in the transaction list. If left blank, the last fifty (50) transactions for all accounts of the Account Holder will be included.",
+                    "items": {
+                        "properties": {
+                            "accountCode": {
+                                "description": "The account for which to retrieve the transactions.",
+                                "type": "string"
+                            },
+                            "page": {
+                                "description": "The page of transactions to retrieve.\nEach page lists fifty (50) transactions.  The most recent transactions are included on page 1.",
+                                "format": "int32",
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "accountCode",
+                            "page"
+                        ]
+                    },
+                    "type": "array"
+                },
+                "transactionStatuses": {
+                    "description": "A list of statuses to include in the transaction list.  If left blank, all transactions will be included.\n>Permitted values: `PendingCredit`, `CreditFailed`, `Credited`, `Converted`, `PendingDebit`, `DebitFailed`, `Debited`, `DebitReversedReceived`, `DebitedReversed`, `ChargebackReceived`, `Chargeback`, `ChargebackReversedReceived`, `ChargebackReversed`, `Payout`, `PayoutReversed`, `FundTransfer`, `PendingFundTransfer`.\n>* `PendingCredit`: a pending balance credit.\n>* `CreditFailed`: a pending credit failure; the balance will not be credited.\n>* `Credited`: a credited balance.\n>* `PendingDebit`: a pending balance debit (e.g., a refund).\n>* `DebitFailed`: a pending debit failure; the balance will not be debited.\n>* `Debited`: a debited balance (e.g., a refund).\n>* `DebitReversedReceived`: a pending refund reversal.\n>* `DebitedReversed`: a reversed refund.\n>* `ChargebackReceived`: a received chargeback request.\n>* `Chargeback`: a processed chargeback.\n>* `ChargebackReversedReceived`: a pending chargeback reversal.\n>* `ChargebackReversed`: a reversed chargeback.\n>* `Payout`: a payout.\n>* `PayoutReversed`: a reversed payout.\n>* `FundTransfer`: the transfer of funds from one account to another.",
+                    "items": {
+                        "enum": [
+                            "Chargeback",
+                            "ChargebackReceived",
+                            "ChargebackReversed",
+                            "ChargebackReversedReceived",
+                            "Converted",
+                            "CreditFailed",
+                            "Credited",
+                            "DebitFailed",
+                            "DebitReversedReceived",
+                            "Debited",
+                            "DebitedReversed",
+                            "FundTransfer",
+                            "Payout",
+                            "PayoutReversed",
+                            "PendingCredit",
+                            "PendingDebit",
+                            "PendingFundTransfer"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "accountHolderCode"
+            ],
+            "type": "object"
+        }
+    }
+}

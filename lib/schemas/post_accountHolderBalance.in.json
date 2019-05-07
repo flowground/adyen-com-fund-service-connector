@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "accountHolderCode": {
+                    "description": "The code of the Account Holder of which to retrieve the balance.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "accountHolderCode"
+            ],
+            "type": "object"
+        }
+    }
+}

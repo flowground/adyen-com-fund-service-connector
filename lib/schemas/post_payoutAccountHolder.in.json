@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "accountCode": {
+                    "description": "The code of the account from which the payout is to be made.",
+                    "type": "string"
+                },
+                "accountHolderCode": {
+                    "description": "The code of the Account Holder who owns the account from which the payout is to be made.\nThe Account Holder is the party to which the payout will be made.",
+                    "type": "string"
+                },
+                "amount": {
+                    "description": "The amount to pay out.",
+                    "properties": {
+                        "currency": {
+                            "description": "The three-character [ISO currency code](https://docs.adyen.com/developers/currency-codes).",
+                            "maxLength": 3,
+                            "minLength": 3,
+                            "type": "string"
+                        },
+                        "value": {
+                            "description": "The payable amount that can be charged for the transaction.\n\nThe transaction amount needs to be represented in minor units according to the [following table](https://docs.adyen.com/developers/currency-codes).",
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "value",
+                        "currency"
+                    ]
+                },
+                "bankAccountUUID": {
+                    "description": "The unique ID of the Bank Account held by the Account Holder to which the payout is to be made.\nIf left blank, a bank account is automatically selected.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A description of the payout.",
+                    "type": "string"
+                },
+                "merchantReference": {
+                    "description": "A value that can be supplied at the discretion of the executing user in order to link multiple transactions to one another.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "accountHolderCode",
+                "accountCode",
+                "amount"
+            ],
+            "type": "object"
+        }
+    }
+}
